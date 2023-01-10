@@ -53,6 +53,7 @@ public class BookingTests {
     public void getAllBookingsById_returnOk(){
             Response response = request
                                     .when()
+                                        .queryParam("firstName", "Sally")
                                         .get("/booking")
                                     .then()
                                         .extract()
@@ -67,7 +68,7 @@ public class BookingTests {
     public void  getAllBookingsByUserFirstName_BookingExists_returnOk(){
                     request
                         .when()
-                            .queryParam("firstName", "Carol")
+                            .queryParam("firstName", "Mila")
                             .get("/booking")
                         .then()
                             .assertThat()

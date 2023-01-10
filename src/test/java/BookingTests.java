@@ -95,8 +95,31 @@ public class BookingTests {
                         .statusCode(200)
                         .contentType(ContentType.JSON).and().time(lessThan(2000L));
 
-
-
     }
+    @Test // Delete booking
+    public void DeleteBookingById_returnOk(){
+        request
+                //.header("Authorization","Basic")
+                .header("Cookie", "token=fe6cee1aa40b9c9")
+                .when()
+                .delete("/booking/" + faker.number().digits(5))
+                .then()
+                .assertThat()
+                .statusCode(201)
+        ;
+    }
+    @Test // Health check
+    public void ApiIsUpCheck_returnCreated(){
+        request
+                .when()
+                .get("/ping")
+                .then()
+                .assertThat()
+                .statusCode(201)
+        ;
+   }
 
 }
+
+
+
